@@ -1,9 +1,8 @@
 {
-  "name": "ice-1",
+  "name": "ice-4",
   "version": "1.0.0",
   "description": "Repo for WEBD6201 ICE4",
   "main": "index.js",
-  "repository": "https://github.com/MattEnns/WEBD6201-W2022-ICEs-Section1.git",
   "author": "Matt Enns",
   "license": "MIT",
   "dependencies": {
