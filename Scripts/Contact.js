@@ -61,7 +61,7 @@
             this.EmailAddress = propertyArray[2];
         }
     
-        // overridden methods
+        // overridden methods 
     
         toString()
         {
