@@ -1,6 +1,6 @@
 // Matt Enns 100821160
 // David Nguyen 100604426
-// 2022-02-04
+// 2022-02-06
 
 // IIFE -- Immediately Invoked Function Express
 // AKA anonymous self-executing function
@@ -12,7 +12,7 @@
     {
         // Get array (collection) of nav-link <a>
         let NavBarLinks = document.getElementsByClassName("nav-link");
-        
+
         // Loop through nav-link and replace what is inside <a> tags with new
         let i = 0;
         for (i = 0; i < NavBarLinks.length; i++) {
