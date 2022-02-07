@@ -148,7 +148,7 @@
         
         // Step 2 - create a HTML Element in memory
         let Article = document.createElement("article");
-        let ArticleParagraph = `<h3>Here is our Projects page showcasing our 4 favourite projects</h3>
+        let ArticleParagraph = `<h3>Here is our Projects page showcasing our 3 favourite projects</h3>
         <p><a title="MattEnns.github.io Website" href="https://MattEnns.github.io/" target="_blank">MattEnns.github.io</a> - GitHub.io website</p>
         <p><img src="./images/megithubio.jpg" alt="Snapshot of GitHub.io website" /></p>
         <p><a title="AMLCSL Website" href="https://www.amlcsl.com/" target="_blank">AMLCSL.com</a> - Oshawa Computer Repair and Sales store website created in WordPress</p>
