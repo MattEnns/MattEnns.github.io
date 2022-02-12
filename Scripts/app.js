@@ -1,271 +1,289 @@
-// Matt Enns 100821160
-// David Nguyen 100604426
-// 2022-02-06
-
 // IIFE -- Immediately Invoked Function Express
 // AKA anonymous self-executing function
+
 "use strict";
-(function(){
-
-    // Method to change Nav Item word Products to Projects
-    function ChangeProductsToProjects()
-    {
-        // Get array (collection) of nav-link <a>
-        let NavBarLinks = document.getElementsByClassName("nav-link");
-
-        // Loop through nav-link and replace what is inside <a> tags with new
-        let i = 0;
-        for (i = 0; i < NavBarLinks.length; i++) {
-            //console.log(NavBarLinks[i].innerHTML);
-            if (NavBarLinks[i].innerHTML == `<i class="fas fa-project-diagram"></i> Products`){
-                NavBarLinks[i].innerHTML = `<i class="fas fa-project-diagram"></i> Projects`;
-            }
-        } 
-
-        // Loop through nav-link active and replace what is inside <a> tags with new
-        let NavBarLinksActive = document.getElementsByClassName("nav-link active");
-        i = 0;
-        for (i = 0; i < NavBarLinksActive.length; i++) {
-            //console.log(NavBarLinksActive[i].innerHTML);
-            if (NavBarLinksActive[i].innerHTML == `<i class="fas fa-project-diagram"></i> Products`){
-                NavBarLinksActive[i].innerHTML = `<i class="fas fa-project-diagram"></i> Projects`;
-            }
-        }        
-    }
-    
-    // Method to add Nav Item 'Human Resources' between
-    function InsertHRNavBarItem()
-    {        
-        // Get array of il element
-        let NavBarItems = document.getElementsByClassName("navbar-nav ms-auto mb-2 mb-lg-0")[0];
-
-        // Create li element
-        let NavItem = document.createElement("li");
-        NavItem.setAttribute("class", "nav-item");
-        let NavItemInnerHTML = `<a class="nav-link" href="#"><i class="fas fa-user-friends"></i> Human Resources</a>`;
-        NavItem.innerHTML = NavItemInnerHTML;
-
-        // Insert new li element before li at position 2
-        NavBarItems.insertBefore(NavItem,NavBarItems.childNodes[4]);
-    }
-
-    // Method to run function when on Home page
+(function()
+{
     function DisplayHome()
     {
-        // console output home page
         console.log("Home Page");
-        
-        // Insert HR nav bar item
-        InsertHRNavBarItem();
-        
-        // Change nav bar item
-        ChangeProductsToProjects();
 
+        $("#AboutUsButton").on("click", () => 
+        {
+            location.href = "about.html";
+        });
 
-        // Background body image
-        let bodyElement = document.body;            
-        bodyElement.setAttribute("background", "/images/backgroundfinal.jpg");
+        $("main").append(`<p id="MainParagraph" class="mt-3">This is the Main Paragraph</p>`);
 
-        
-        // Step 1 - get a reference to an entry point(s) (insertion / deletion point)
-        let MainContent = document.getElementsByTagName("main")[0];
-        
-        // Step 2 - create a HTML Element in memory
-        let Article = document.createElement("article");
-        let ArticleParagraph = `<h1 style="text-align: center;"><span style="color: #800000;">Welcome to </span></h1>
-        <h2 style="text-align: center;"><span style="color: #0000ff;">Matt Enns </span></h2>
-        <h2 style="text-align: center;">and</h2>
-        <h2 style="text-align: center;"><span style="color: #008000;">David Nguyen </span></h2>
-        <h2 style="text-align: center;">Website!</h2>
-        <p>On this website you will see our Projects, Services and information about us as software/web developers.</p>
-        <p>This website is created for course <a title="DC WEBD6201 course page" href="https://durhamcollege.ca/programs-and-courses/courses?subj_code_in=WEBD&amp;crse_numb_in=6201&amp;semester_in=SEM4" target="_blank">WEBD 6201</a> in Winter 2022 for Prof. Tom Tsiliopoulos.</p>`;
+        $("body").append(`
+        <article class="container">
+            <p id="ArticleParagraph" class="mt-3">This is the Article Paragraph</p>
+            </article>`);
 
-        // Step 3 - configure new element       
-        Article.setAttribute("class", "container");
-
-        // Step 4 - perform insertion
-        Article.innerHTML = ArticleParagraph;
-        MainContent.appendChild(Article);
     }
 
     function DisplayAboutPage()
     {
-        // console output about us page
-        console.log("About Us");
-
-        // Insert HR nav bar item
-        InsertHRNavBarItem();
-        
-        // Change nav bar item
-        ChangeProductsToProjects();
-        
-        // Background body image
-        let bodyElement = document.body;            
-        bodyElement.setAttribute("background", "/images/backgroundfinal.jpg");
-
-        // Step 1 - get a reference to an entry point(s) (insertion / deletion point)
-        let MainContent = document.getElementsByTagName("main")[0];
-        
-        // Step 2 - create a HTML Element in memory
-        let Article = document.createElement("article");
-        let ArticleParagraph = `<h3>Here is our About Us page. Here is our resumes and contact information.&nbsp;</h3>
-        <h3>Matt Enns</h3>
-        <p><img src="./images/matthewennsclipartprofilepic.jpg" alt="Matthew Enns Profile Pic Clipart" /></p>
-        <p>Resume Link: <a title="David Nguyen's Resume in a Google Doc" href="https://docs.google.com/document/d/1pgNru29FKwWM-FRrlDyCSpxh0eSpa398br1kSkv8TdQ/edit?usp=sharing" target="_blank">Google Doc</a></p>
-        <p>Contact Link: <a title="Matthew Enns email at Durham College" href="mailto:matthew.enns@dcmail.ca" target="_blank">matthew.enns@dcmail.ca</a></p>
-        <h3>David Nguyen</h3>
-        <p>I have three passions in life: computers, art and programming. I also like gaming and coffee. I like creating software mostly but I am willing to try and learn other types of development.</p>
-        <p><img src="./images/davidnguyenclipartprofilepic.jpg" alt="David Nguyen Profile Pic Clipart" /></p>
-        <p>Resume Link: <a title="David Nguyen's Resume in a Google Doc" href="https://docs.google.com/document/d/1c5DLF8RGRX8LbDr0MFF2LPyvJGN5oruNn1yS0Txhnbk/edit?usp=sharing" target="_blank">Google Doc</a></p>
-        <p>Contact Link: <a title="David Nguyen's Email at Durham College" href="mailto:david.nguyen1@dcmail.ca" target="_blank">david.nguyen1@dcmail.ca</a></p>
-        <hr/><hr/><hr/>`;
-
-        // Step 3 - configure new element       
-        Article.setAttribute("class", "container");
-
-        // Step 4 - perform insertion
-        Article.innerHTML = ArticleParagraph;
-        MainContent.appendChild(Article);
+        console.log("About Us Page");
     }
 
     function DisplayProjectsPage()
     {
-        // console output our projects page
         console.log("Our Projects Page");
-
-        // Insert HR nav bar item
-        InsertHRNavBarItem();
-        
-        // Change nav bar item
-        ChangeProductsToProjects();
-        
-        // Background body image
-        let bodyElement = document.body;            
-        bodyElement.setAttribute("background", "/images/backgroundfinal.jpg");
-
-        // Step 1 - get a reference to an entry point(s) (insertion / deletion point)
-        let MainContent = document.getElementsByTagName("main")[0];
-        
-        // Step 2 - create a HTML Element in memory
-        let Article = document.createElement("article");
-        let ArticleParagraph = `<h3>Here is our Projects page showcasing our 3 favourite projects</h3>
-        <p><a title="MattEnns.github.io Website" href="https://MattEnns.github.io/" target="_blank">MattEnns.github.io</a> - GitHub.io website</p>
-        <p><img src="./images/megithubio.jpg" alt="Snapshot of GitHub.io website" /></p>
-        <p><a title="AMLCSL Website" href="https://www.amlcsl.com/" target="_blank">AMLCSL.com</a> - Oshawa Computer Repair and Sales store website created in WordPress</p>
-        <p><img src="./images/amlcsl.jpg" alt="Snapshot of AMLCSL WordPress website" /></p>
-        <p><a title="Teach English World Teaching Portal Website" href="http://www.teachenglishworld.com/" target="_blank">TeachEnglishWorld.com</a> - Teaching English Portal website created in WordPress</p>
-        <p><img src="./images/tew.jpg" alt="Snapshot of Teach English World WordPress website" /></p>
-        <hr/><hr/><hr/>`;
-
-        // Step 3 - configure new element       
-        Article.setAttribute("class", "container");
-
-        // Step 4 - perform insertion
-        Article.innerHTML = ArticleParagraph;
-        MainContent.appendChild(Article);
     }
 
     function DisplayServicesPage()
     {
-         // console output our services page
         console.log("Our Services Page");
+    }
+
+    /**
+     * Adds a Contact Object to localStorage
+     *
+     * @param {string} fullName
+     * @param {string} contactNumber
+     * @param {string} emailAddress
+     */
+    function AddContact(fullName, contactNumber, emailAddress)
+    {
+        let contact = new core.Contact(fullName, contactNumber, emailAddress);
+        if(contact.serialize())
+        {
+            let key = contact.FullName.substring(0, 1) + Date.now();
+
+            localStorage.setItem(key, contact.serialize());
+        }
+    }
+
+    /**
+     * This method validates an input text field in the form and displays
+     * an error in the message area
+     *
+     * @param {string} input_field_ID
+     * @param {RegExp} regular_expression
+     * @param {string} error_message
+     */
+    function ValidateField(input_field_ID, regular_expression, error_message)
+    {
+        let messageArea = $("#messageArea").hide();
         
-        // Insert HR nav bar item
-        InsertHRNavBarItem();
-        
-        // Change nav bar item
-        ChangeProductsToProjects();
+        $("#" + input_field_ID).on("blur", function()
+        {
+            let inputFieldText = $(this).val();
 
-        // Background body image
-        let bodyElement = document.body;            
-        bodyElement.setAttribute("background", "/images/backgroundfinal.jpg");
+            if(!regular_expression.test(inputFieldText))
+            {
+                $(this).trigger("focus").trigger("select"); 
+                messageArea.addClass("alert alert-danger").text(error_message).show(); 
+            }
+            else
+            {
+                messageArea.removeAttr("class").hide();
+            }
+        });
+    }
 
-        // Step 1 - get a reference to an entry point(s) (insertion / deletion point)
-        let MainContent = document.getElementsByTagName("main")[0];
-        
-        // Step 2 - create a HTML Element in memory
-        let Article = document.createElement("article");
-        let ArticleParagraph = `<h3>Here is our Services page. We offer the following Skills</h3>
-        <h3>Custom Software Development</h3>
-        <p><img src="./images/softwaredevelopmentclipart.jpg" alt="Software Development Clipart" /></p>
-        <h3>Custom Website Development</h3>
-        <p><img src="./images/webdevelopmentclipart.jpg" alt="Web Development Clipart" /></p>
-        <h3>Custom Logo Development</h3>
-        <p><img src="./images/logodesignclipart.jpg" alt="Web Development Clipart" /></p>
-        <hr/><hr/><hr/>`;
-
-        // Step 3 - configure new element       
-        Article.setAttribute("class", "container");
-
-        // Step 4 - perform insertion
-        Article.innerHTML = ArticleParagraph;
-        MainContent.appendChild(Article);
+    function ContactFormValidation()
+    {
+        ValidateField("fullName", /^([A-Z][a-z]{1,3}\.?\s)?([A-Z][a-z]{1,})+([\s,-]([A-Z][a-z]{1,}))*$/,"Please enter a valid Full Name.");
+        ValidateField("contactNumber", /^(\+\d{1,3}[\s-.])?\(?\d{3}\)?[\s-.]?\d{3}[\s-.]?\d{4}$/, "Please enter a valid Contact Number.");
+        ValidateField("emailAddress", /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}$/, "Please enter a valid Email Address.");
     }
 
     function DisplayContactPage()
     {
-        // console output contact us page
         console.log("Contact Us Page");
-        // Insert HR nav bar item
-        InsertHRNavBarItem();
-        
-        // Change nav bar item
-        ChangeProductsToProjects();
-        
-        // Background body image
-        let bodyElement = document.body;            
-        bodyElement.setAttribute("background", "/images/backgroundfinal.jpg");
 
-        // get sendButton element button
-        let sendButton = document.getElementById("sendButton");
+        ContactFormValidation();
         
-        // click function to sendButton button 
-        sendButton.addEventListener("click", function(event)
+        let sendButton = document.getElementById("sendButton");
+        let subscribeCheckbox = document.getElementById("subscribeCheckbox");
+
+        sendButton.addEventListener("click", function()
         {
-            // Prevent Default to keep contact form data from refreshing/disappearing
-            event.preventDefault();
-            
-            // Create a new contact object
-            let contact = new Contact(fullName.value, contactNumber.value, emailAddress.value);
-            
-            // Console write contact object
-            console.log(contact.toString());
-                
-            // Redirect to home page index.html after 3 seconds
-            let foo = setInterval(function(){
-                document.location.href = 'index.html';
-            },3000)            
+            if(subscribeCheckbox.checked)
+            { 
+                AddContact(fullName.value, contactNumber.value, emailAddress.value);
+            }
         });
     }
-   
-    // Method start to run a function depending on page
+
+    function DisplayContactListPage()
+    {
+        console.log("Contact-List Page");
+        if(localStorage.length > 0)
+        {
+            let contactList = document.getElementById("contactList");
+
+            let data = ""; // data container -> add deserialized data from the localStorage
+
+            let keys = Object.keys(localStorage); // returns a string array of keys
+
+            let index = 1; // counts how many keys
+
+            // for every key in the keys array (collection), loop
+            for (const key of keys) 
+            {
+                let contactData = localStorage.getItem(key); // get localStorage data value related to the key
+
+                let contact = new core.Contact(); // create a new empty contact object
+                contact.deserialize(contactData);
+
+                // inject a repeatable row into the contactList
+                data += `<tr>
+                <th scope="row" class="text-center">${index}</th>
+                <td>${contact.FullName}</td>
+                <td>${contact.ContactNumber}</td>
+                <td>${contact.EmailAddress}</td>
+                <td class="text-center"><button value="${key}" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Edit</button></td>
+                <td class="text-center"><button value="${key}" class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</button></td>
+                </tr>
+                `;
+
+                index++;
+            }
+
+            contactList.innerHTML = data;
+
+            $("#addButton").on("click",() =>
+            {
+                location.href = "edit.html#add";
+            });
+
+            $("button.delete").on("click", function()
+            {
+                if(confirm("Are you sure?"))
+                {
+                    localStorage.removeItem($(this).val());
+                }
+
+                // refresh after deleting
+                location.href = "contact-list.html";
+            });
+
+            $("button.edit").on("click", function()
+            {
+                location.href = "edit.html#" + $(this).val();
+            });
+        }
+    }
+
+    function DisplayEditPage()
+    {
+        console.log("Edit Page");
+
+        ContactFormValidation();
+
+        let page = location.hash.substring(1);
+
+        switch(page)
+        {
+            case "add":
+                {
+                    $("main>h1").text("Add Contact");
+
+                    $("#editButton").html(`<i class="fas fa-plus-circle fa-lg"></i> Add`);
+                
+                    $("#editButton").on("click", (event)=>
+                    {
+                        event.preventDefault();
+                        // Add Contact
+                        AddContact(fullName.value, contactNumber.value, emailAddress.value);
+                        // refresh the contact-list page
+                        location.href = "contact-list.html";
+                    });
+
+                    $("#cancelButton").on("click", () =>
+                    {
+                        location.href = "contact-list.html";
+                    });
+                }
+                break;
+            default:
+                {
+                    // get the contact  info from localStorage
+                    let contact = new core.Contact();
+                    contact.deserialize(localStorage.getItem(page));
+
+                    // display the contact info in the edit form
+                    $("#fullName").val(contact.FullName);
+                    $("#contactNumber").val(contact.ContactNumber);
+                    $("#emailAddress").val(contact.EmailAddress);
+
+                    // when editButton is pressed - update the contact
+                    $("#editButton").on("click", (event)=>
+                    {
+                        event.preventDefault();
+
+                        // get any changes from the form
+                        contact.FullName = $("#fullName").val();
+                        contact.ContactNumber = $("#contactNumber").val();
+                        contact.EmailAddress = $("#emailAddress").val();
+
+                        // replace the item in localStorage
+                        localStorage.setItem(page, contact.serialize());
+
+                        // return to the contact-list
+                        location.href = "contact-list.html";
+                    });
+
+                    $("#cancelButton").on("click", () =>
+                    {
+                        location.href = "contact-list.html";
+                    });
+                }
+                break;
+        }
+    }
+
+    function DisplayLoginPage()
+    {
+        console.log("Login Page");
+    }
+
+    function DisplayRegisiterPage()
+    {
+        console.log("Register Page");
+    }
+
+    // named function
     function Start()
     {
-        // Console write start function app started
-        console.log("App Started!!")
+        console.log("App Started!!");
 
-        // Run appropiate function depending on page title
-        switch(document.title)
-        {
-            case "Home":
-                DisplayHome();
-                break;
-            case "About Us":
-                DisplayAboutPage();
-                break;
-            case "Our Projects":
-                DisplayProjectsPage();
-                break;
-            case "Our Services":
-                DisplayServicesPage();
-                break;        
-            case "Our Contact Us":
-                DisplayContactPage();
-                break;
-        }                     
+        switch (document.title) {
+          case "Home":
+            DisplayHome();
+            break;
+          case "About Us":
+            DisplayAboutPage();
+            break;
+          case "Our Projects":
+            DisplayProjectsPage();
+            break;
+          case "Our Services":
+            DisplayServicesPage();
+            break;
+          case "Contact-List":
+            DisplayContactListPage();
+            break;
+          case "Contact Us":
+            DisplayContactPage();
+            break;
+          case "Edit":
+            DisplayEditPage();
+            break;
+            case "Login":
+            DisplayLoginPage();
+            break;
+            case "Register":
+            DisplayRegisiterPage();
+            break;
+        }
     }
     
-    // Start function when page loads
+
     window.addEventListener("load", Start);
+
 
 })();
